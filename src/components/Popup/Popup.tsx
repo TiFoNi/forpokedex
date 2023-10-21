@@ -82,12 +82,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, pokemon }) => {
             {pokemon.stats.map((stat) => {
               const [barWidth, setBarWidth] = useState(0);
 
-              // const maxStat = Math.max(
-              //   ...pokemon.stats.map((s) => s.base_stat)
-              // );
+              const maxStat = Math.max(
+                ...pokemon.stats.map((s) => s.base_stat)
+              );
 
               setTimeout(() => {
-                setBarWidth((stat.base_stat / 300) * 100);
+                setBarWidth((stat.base_stat / maxStat) * 100);
               }, 100);
 
               return (

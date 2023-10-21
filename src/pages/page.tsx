@@ -9,6 +9,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 import ElementFilter from "@/components/ElementFilter/ElementFilter";
 import Popup from "@/components/Popup";
 import TabsButtons from "@/components/TabsButtons/TabsButtons";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 interface Pokemon {
   name: string;
