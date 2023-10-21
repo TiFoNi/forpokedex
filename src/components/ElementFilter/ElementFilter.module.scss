@@ -1,0 +1,31 @@
+.SecondRightMenu {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Центрування по горизонталі */
+  gap: 5px;
+  width: calc(80% - 10px);
+}
+
+.button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+  font-size: 16px;
+  cursor: pointer;
+  width: calc(50% - 10px);
+  height: 40px;
+}
+
+.activeButton {
+  background-color: #158d65; /* Синій колір фону */
+  color: #fff; /* Білий колір тексту */
+  border: 1px solid #158d65; /* Синя рамка */
+  cursor: pointer;
+}

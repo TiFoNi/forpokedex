@@ -1,0 +1,252 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  background-image: url("/BackgroundImage.jpg");
+  border-radius: 2rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  padding-bottom: 1rem;
+}
+
+.pagesContainer {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.forButtons {
+  margin-bottom: 1rem;
+}
+.mone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  width: calc(33% - 1rem);
+}
+
+.CardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.IdCardHeader {
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .CardHeader {
+    font-size: 14px;
+    justify-content: center;
+  }
+  .IdCardHeader {
+    display: none;
+  }
+}
+
+.BGcontainer {
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.pageContainer {
+  display: grid;
+  grid-template-columns: 17.5% 65% 17.5%;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    grid-template-columns: 10% 80% 10%;
+  }
+}
+
+.leftColumn {
+  flex: 1;
+  /* Стилі для лівого стовпця */
+}
+
+.middleColumn {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Стилі для середнього стовпця */
+}
+
+.rightColumn {
+  flex: 3;
+}
+
+@media screen and (max-width: 1024px) {
+  .rightMenuContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 70%;
+    background-color: #2a2e2c;
+    border-radius: 1rem;
+    z-index: 2;
+    display: none;
+  }
+  .rightMenuContainer.active {
+    display: block;
+  }
+  .rightMenuBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Затемнений фон */
+    display: none;
+    z-index: 3;
+  }
+  .rightMenuBackground.active {
+    display: block;
+  }
+}
+
+.UpMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+}
+
+@media screen and (max-width: 1024px) {
+  .UpMenu {
+    margin-top: 17%;
+  }
+}
+
+.UpMenuButton {
+  height: 30px;
+  border-radius: 8px;
+}
+
+.rightMenu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.collapsed {
+  display: none;
+}
+
+.forButton {
+  display: flex;
+  justify-content: center;
+  max-width: 7rem;
+  max-height: 2rem;
+}
+
+.water {
+  background-color: blue;
+  color: white;
+}
+
+.fire {
+  background-color: orange;
+  color: white;
+}
+
+.electric {
+  background-color: yellow;
+  color: black;
+}
+
+.grass {
+  background-color: green;
+  color: white;
+}
+
+.dark {
+  background-color: darkgray;
+  color: white;
+}
+
+.flying {
+  background-color: lightblue;
+  color: black;
+}
+
+.ice {
+  background-color: lightcyan;
+  color: black;
+}
+
+.poison {
+  background-color: purple;
+  color: white;
+}
+
+.rock {
+  background-color: brown;
+  color: white;
+}
+
+.dragon {
+  background-color: purple;
+  color: white;
+}
+
+.ghost {
+  background-color: violet;
+  color: white;
+}
+
+.steel {
+  background-color: silver;
+  color: black;
+}
+
+.ground {
+  background-color: brown;
+  color: white;
+}
+
+.fighting {
+  background-color: red;
+  color: white;
+}
+
+.normal {
+  background-color: gray;
+  color: black;
+}
+
+.bug {
+  background-color: green;
+  color: black;
+}
+
+.water,
+.fire,
+.electric,
+.grass,
+.dark,
+.flying,
+.ice,
+.poison,
+.rock,
+.dragon,
+.ghost,
+.steel,
+.ground,
+.fighting,
+.normal,
+.bug {
+  border-radius: 10px;
+  padding: 1px 7px;
+  word-wrap: break-word;
+  display: inline-block;
+  margin-bottom: 3px;
+}

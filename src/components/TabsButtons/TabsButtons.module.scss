@@ -1,0 +1,10 @@
+.ButtonGroupStyle {
+  display: flex;
+  justify-content: center;
+}
+.activeButton {
+  background-color: #158d65;
+  color: #fff;
+  border: 1px solid #158d65;
+  cursor: pointer;
+}

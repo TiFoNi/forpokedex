@@ -1,0 +1,214 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.popup_inner {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-height: 60%;
+  width: 40%;
+}
+
+@media (max-width: 768px) {
+  .popup_inner {
+    width: 70%;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.nameContainer {
+  text-align: center;
+  margin-top: 1%;
+}
+
+.TextNameContainer {
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .TextNameContainer {
+    font-size: 18px;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imageContainer {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemonImage {
+  width: 70%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .pokemonImage {
+    width: 100%;
+  }
+}
+
+.textContainer {
+  flex: 0 0 50%;
+  justify-content: flex-start;
+  padding-right: 15%;
+}
+
+.close_button {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+  position: absolute;
+  top: 3%;
+  right: 2%;
+}
+
+.close_button:hover {
+  color: #f00;
+  display: flex;
+  justify-content: right;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.water {
+  background-color: blue;
+  color: white;
+}
+
+.fire {
+  background-color: orange;
+  color: white;
+}
+
+.electric {
+  background-color: yellow;
+  color: black;
+}
+
+.grass {
+  background-color: green;
+  color: white;
+}
+
+.dark {
+  background-color: darkgray;
+  color: white;
+}
+
+.flying {
+  background-color: lightblue;
+  color: black;
+}
+
+.ice {
+  background-color: lightcyan;
+  color: black;
+}
+
+.poison {
+  background-color: purple;
+  color: white;
+}
+
+.rock {
+  background-color: brown;
+  color: white;
+}
+
+.dragon {
+  background-color: purple;
+  color: white;
+}
+
+.ghost {
+  background-color: violet;
+  color: white;
+}
+
+.steel {
+  background-color: silver;
+  color: black;
+}
+
+.ground {
+  background-color: brown;
+  color: white;
+}
+
+.fighting {
+  background-color: red;
+  color: white;
+}
+
+.normal {
+  background-color: gray;
+  color: black;
+}
+
+.bug {
+  background-color: green;
+  color: black;
+}
+
+.water,
+.fire,
+.electric,
+.grass,
+.dark,
+.flying,
+.ice,
+.poison,
+.rock,
+.dragon,
+.ghost,
+.steel,
+.ground,
+.fighting,
+.normal,
+.bug {
+  border-radius: 10px;
+  padding: 1px 7px;
+  word-wrap: break-word;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.statBar {
+  max-width: 90%;
+  margin: 0;
+  border: 3px solid green;
+  border-radius: 3px;
+  transition: width 2s;
+}
