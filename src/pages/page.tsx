@@ -10,6 +10,7 @@ import ElementFilter from "@/components/ElementFilter/ElementFilter";
 import Popup from "@/components/Popup";
 import TabsButtons from "@/components/TabsButtons/TabsButtons";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Image from "next/image";
 
 interface Pokemon {
   name: string;
@@ -52,7 +53,7 @@ const HomePage = () => {
     const allPokemonData = await Promise.all(allPokemonDataPromises);
     setAllPokemon(allPokemonData);
   };
-
+  const [PokemonsCount, setPokemonsCount] = useState(18);
   useEffect(() => {
     const handleResize = () => {
       const newScreenWidth = window.innerWidth;
@@ -98,7 +99,7 @@ const HomePage = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [currentPage]);
+  }, [currentPage, PokemonsCount, allPokemon.length]);
 
   const [searchPokemons, setsearchPokemons] = useState<Pokemon[]>([]);
   const [searchText, setSearchText] = useState<string>("");
@@ -143,8 +144,6 @@ const HomePage = () => {
     setColumnCount(cols);
     setActiveButtonIndex(cols);
   };
-
-  const [PokemonsCount, setPokemonsCount] = useState(18);
 
   const [activeButtonIndexPCount, setActiveButtonIndexPCount] = useState(18);
 
@@ -207,6 +206,7 @@ const HomePage = () => {
             {(searchText ? searchPokemons : filteredPokemon || pokemonList).map(
               (pokemon) => (
                 <div
+                  key={pokemon.id}
                   className={s.mone}
                   style={{ width: `calc(${100 / columnCount}% - 1rem)` }}
                 >
@@ -223,13 +223,14 @@ const HomePage = () => {
 
                     <Card.Body>
                       <div>
-                        <img
+                        <Image
                           src={pokemon.sprites.front_default}
                           alt={pokemon.name}
-                          width="100%"
-                          height="100%"
                           style={{ cursor: "pointer" }}
                           onClick={() => openPopup(pokemon)}
+                          width={100}
+                          height={100}
+                          className={s.pokemonImage}
                         />
                       </div>
                       <hr />

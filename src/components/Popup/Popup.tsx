@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import s from "./Popup.module.scss";
+import Image from "next/image";
 
 interface Pokemon {
   name: string;
@@ -35,6 +36,30 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, pokemon }) => {
 
   if (!isOpen) return null;
 
+  const maxStat = Math.max(...pokemon.stats.map((s) => s.base_stat));
+
+  interface StatBarProps {
+    stat: Pokemon["stats"][0];
+    maxStat: number;
+  }
+
+  const StatBar: React.FC<StatBarProps> = ({ stat, maxStat }) => {
+    const [barWidth, setBarWidth] = useState(0);
+
+    useEffect(() => {
+      setTimeout(() => {
+        setBarWidth((stat.base_stat / maxStat) * 100);
+      }, 100);
+    }, [stat.base_stat, maxStat]);
+
+    return (
+      <div>
+        {stat.stat.name}: {stat.base_stat}
+        <hr className={s.statBar} style={{ width: `${barWidth}%` }}></hr>
+      </div>
+    );
+  };
+
   return (
     <div className={s.popup}>
       <div className={s.popup_inner} onClick={handlePopupClick}>
@@ -50,10 +75,12 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, pokemon }) => {
             </div>
             <div className={s.contentContainer}>
               <div className={s.imageContainer}>
-                <img
+                <Image
                   src={pokemon.sprites.front_default}
                   alt={pokemon.name}
                   className={s.pokemonImage}
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className={s.textContainer}>
@@ -79,27 +106,9 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose, pokemon }) => {
         <h3 className={s.center}>Статистика</h3>
         <div>
           <ul>
-            {pokemon.stats.map((stat) => {
-              const [barWidth, setBarWidth] = useState(0);
-
-              const maxStat = Math.max(
-                ...pokemon.stats.map((s) => s.base_stat)
-              );
-
-              setTimeout(() => {
-                setBarWidth((stat.base_stat / maxStat) * 100);
-              }, 100);
-
-              return (
-                <div key={stat.stat.name}>
-                  {stat.stat.name}: {stat.base_stat}
-                  <hr
-                    className={s.statBar}
-                    style={{ width: `${barWidth}%` }}
-                  ></hr>
-                </div>
-              );
-            })}
+            {pokemon.stats.map((stat) => (
+              <StatBar key={stat.stat.name} stat={stat} maxStat={maxStat} />
+            ))}
           </ul>
         </div>
       </div>

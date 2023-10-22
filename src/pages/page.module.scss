@@ -65,9 +65,13 @@
   }
 }
 
+.pokemonImage {
+  width: 100%;
+  height: 100%;
+}
+
 .leftColumn {
   flex: 1;
-  /* Стилі для лівого стовпця */
 }
 
 .middleColumn {
