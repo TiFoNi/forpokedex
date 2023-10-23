@@ -1,17 +1,15 @@
 .activePage {
-  background-color: #158d65;
-  color: #fff;
-  border: 1px solid #158d65;
-  border-radius: 1rem;
+  background-color: #158d65 !important;
+  color: #fff !important;
+  border: 1px solid #158d65 !important;
+  border-radius: 1rem !important;
 }
 .cont {
-  position: fixed;
-  width: 100%;
-  z-index: 3;
+  position: fixed !important;
+  width: 100% !important;
+  z-index: 3 !important;
+  top: 0 !important;
 }
 .forMargin {
-  margin-top: 3%;
-}
-.cont {
-  position: fixed;
+  margin-top: 3% !important;
 }

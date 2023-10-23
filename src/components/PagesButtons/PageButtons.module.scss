@@ -1,18 +1,19 @@
 .activePage {
-  background-color: #158d65;
-  color: #fff;
-  border: 1px solid #158d65;
-  cursor: pointer;
+  background-color: #158d65 !important;
+  color: #fff !important;
+  border: 1px solid #158d65 !important;
+  cursor: pointer !important;
 }
 
 .buttonContainer {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 8px !important;
 }
+
 .sizeButton {
-  width: 3rem;
-  height: 2rem;
+  width: 3rem !important;
+  height: 2rem !important;
 }

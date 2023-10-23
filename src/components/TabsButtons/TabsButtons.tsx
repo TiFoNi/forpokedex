@@ -1,6 +1,6 @@
 import React from "react";
-import { Tab, Tabs, ButtonGroup, Button } from "react-bootstrap";
 import s from "./TabsButtons.module.scss";
+import { Tab, Tabs, ButtonGroup, Button } from "react-bootstrap";
 
 interface TabsButtonsProps {
   activeButtonIndex: number;
