@@ -75,7 +75,7 @@ const Navbar = () => {
             onClick={() => ActivePageChanger(3)}
           >
             <Image
-              src="/NoneAvatar.jpg"
+              src="../NoneAvatar.jpg"
               className={`${s.AvatarImage} rounded-circle `}
             />
           </Link>
