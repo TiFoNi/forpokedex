@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import s from "./HomePage.module.scss";
+import s from "./page.module.scss";
 import axios from "axios";
 import { Card } from "react-bootstrap";
 import SearchPokemon from "@/components/SearchPokemon";
@@ -13,7 +13,6 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { debounce } from "lodash";
-import { NavbarProvider, useNavbar } from "@/components/Navbar/NavbarContext";
 
 interface Pokemon {
   name: string;
@@ -203,37 +202,33 @@ const HomePage = () => {
   const [isRightMenuVisible, setIsRightMenuVisible] = useState(false);
 
   return (
-    <NavbarProvider>
-      <Navbar />
-      <div className={s.BGcontainer}>
-        <div className={s.pagesContainer}>
-          <div className={s.UpMenu}>
-            <SearchPokemon onSearch={handleSearch} searchText={searchText} />
-            <button
-              className={`${s.UpMenuButton} ${
-                isRightMenuVisible ? "" : s.hiddenButton
-              }`}
-              onClick={() => setIsRightMenuVisible(!isRightMenuVisible)}
-            >
-              Menu
-            </button>
-          </div>
-          <div className={s.forButtons}>
-            <PageButtons
-              totalPagesCount={Math.ceil(totalPokemonCount / PokemonsCount)}
-              currentPage={currentPage}
-              handlePageChange={handlePageChange}
-            />
-          </div>
+    <div className={s.BGcontainer}>
+      <div className={s.pagesContainer}>
+        <div className={s.UpMenu}>
+          <SearchPokemon onSearch={handleSearch} searchText={searchText} />
+          <button
+            className={`${s.UpMenuButton} ${
+              isRightMenuVisible ? "" : s.hiddenButton
+            }`}
+            onClick={() => setIsRightMenuVisible(!isRightMenuVisible)}
+          >
+            Menu
+          </button>
         </div>
-        <div className={s.pageContainer}>
-          <div className={s.leftColumn}></div>
-          <div className={s.middleColumn}>
-            <div className={s.container}>
-              {(searchText
-                ? searchPokemons
-                : filteredPokemon || pokemonList
-              ).map((pokemon) => (
+        <div className={s.forButtons}>
+          <PageButtons
+            totalPagesCount={Math.ceil(totalPokemonCount / PokemonsCount)}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
+        </div>
+      </div>
+      <div className={s.pageContainer}>
+        <div className={s.leftColumn}></div>
+        <div className={s.middleColumn}>
+          <div className={s.container}>
+            {(searchText ? searchPokemons : filteredPokemon || pokemonList).map(
+              (pokemon) => (
                 <div
                   key={pokemon.id}
                   className={s.mone}
@@ -276,62 +271,62 @@ const HomePage = () => {
                     </Card.Body>
                   </Card>
                 </div>
-              ))}
-            </div>
-            <div onClick={closePopup}>
-              {pokemonToShow && (
-                <Popup
-                  isOpen={isPopupOpen}
-                  onClose={closePopup}
-                  pokemon={pokemonToShow}
-                />
-              )}
-            </div>
+              )
+            )}
           </div>
+          <div onClick={closePopup}>
+            {pokemonToShow && (
+              <Popup
+                isOpen={isPopupOpen}
+                onClose={closePopup}
+                pokemon={pokemonToShow}
+              />
+            )}
+          </div>
+        </div>
+        <div
+          className={`${s.rightMenuBackground} ${
+            isRightMenuVisible ? s.active : ""
+          }`}
+          onClick={(e) => {
+            if (
+              e.target instanceof HTMLElement &&
+              e.target.classList.contains(s.rightMenuBackground)
+            ) {
+              setIsRightMenuVisible(false);
+            }
+          }}
+        >
           <div
-            className={`${s.rightMenuBackground} ${
+            className={`${s.rightMenuContainer} ${
               isRightMenuVisible ? s.active : ""
             }`}
-            onClick={(e) => {
-              if (
-                e.target instanceof HTMLElement &&
-                e.target.classList.contains(s.rightMenuBackground)
-              ) {
-                setIsRightMenuVisible(false);
-              }
-            }}
           >
-            <div
-              className={`${s.rightMenuContainer} ${
-                isRightMenuVisible ? s.active : ""
-              }`}
-            >
-              <div className={s.rightColumn}>
-                <div className={s.rightMenu}>
-                  <div>
-                    <TabsButtons
-                      activeButtonIndex={activeButtonIndex}
-                      isButtonsLocked={isButtonsLocked}
-                      handleColumnsChange={handleColumnsChange}
-                      activeButtonIndexPCount={activeButtonIndexPCount}
-                      handlePokemonsCountChange={handlePokemonsCountChange}
-                    />
-                  </div>
+            <div className={s.rightColumn}>
+              <div className={s.rightMenu}>
+                <div>
+                  <TabsButtons
+                    activeButtonIndex={activeButtonIndex}
+                    isButtonsLocked={isButtonsLocked}
+                    handleColumnsChange={handleColumnsChange}
+                    activeButtonIndexPCount={activeButtonIndexPCount}
+                    handlePokemonsCountChange={handlePokemonsCountChange}
+                  />
                 </div>
               </div>
-              <div>
-                <ElementFilter
-                  pokemon={allPokemon}
-                  handleSortedPokemon={handleSortedPokemon}
-                  pokemonList={pokemonList}
-                  updateSelectedTypes={updateSelectedTypes}
-                />
-              </div>
+            </div>
+            <div>
+              <ElementFilter
+                pokemon={allPokemon}
+                handleSortedPokemon={handleSortedPokemon}
+                pokemonList={pokemonList}
+                updateSelectedTypes={updateSelectedTypes}
+              />
             </div>
           </div>
         </div>
       </div>
-    </NavbarProvider>
+    </div>
   );
 };
 

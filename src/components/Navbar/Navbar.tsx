@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import s from "./NavBar.module.scss";
 import { Image } from "react-bootstrap";
-import { useNavbar } from "@/components/Navbar/NavbarContext";
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState(1);
@@ -46,7 +45,7 @@ const Navbar = () => {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link
-                  href="/"
+                  href="/HomePage"
                   onClick={() => ActivePageChanger(1)}
                   className={`${
                     activePage === 1 ? "nav-link " + s.activePage : "nav-link"

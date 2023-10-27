@@ -4,12 +4,14 @@ const nextConfig = {
     domains: ["raw.githubusercontent.com"],
     unoptimized: true,
   },
-  output: "export",
-  // async exportPathMap() {
-  //   return {
-  //     "/": { page: "/app/HomePage" },
-  //   };
-  // },
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/HomePage",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
