@@ -45,12 +45,14 @@ interface ElementFilterProps {
   pokemon: Pokemon[];
   handleSortedPokemon: (sortedPokemon: Pokemon[] | null) => void;
   pokemonList: Pokemon[];
+  updateSelectedTypes: (types: string[]) => void;
 }
 
 const ElementFilter: React.FC<ElementFilterProps> = ({
   pokemon,
   handleSortedPokemon,
   pokemonList,
+  updateSelectedTypes,
 }) => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
 
@@ -66,6 +68,7 @@ const ElementFilter: React.FC<ElementFilterProps> = ({
     }
 
     setSelectedTypes(newSelectedTypes);
+    updateSelectedTypes(newSelectedTypes);
 
     let sortedPokemon = null;
     if (newSelectedTypes.length === 0) {

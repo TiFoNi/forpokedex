@@ -22,6 +22,11 @@
 .forButtons {
   margin-bottom: 1rem;
 }
+
+.hiddenButton {
+  display: none;
+}
+
 .mone {
   display: flex;
   flex-wrap: wrap;
@@ -46,6 +51,9 @@
   }
   .IdCardHeader {
     display: none;
+  }
+  .hiddenButton {
+    display: block;
   }
 }
 
@@ -84,6 +92,12 @@
 
 .rightColumn {
   flex: 3;
+}
+
+.blockedButton {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 1024px) {

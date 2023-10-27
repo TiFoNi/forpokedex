@@ -1,0 +1,69 @@
+.cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 40%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .formGroup {
+    display: flex;
+    align-items: center;
+  }
+
+  .FormWidth {
+    width: 100%;
+    display: flex;
+  }
+
+  .additionalLabel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .additionalContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .LabelStyle {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    margin-right: 2rem !important;
+    font-weight: bold; /* Зробити лейбли жирними */
+  }
+
+  .RememberMeLabel {
+    font-weight: normal;
+  }
+
+  .SearchStyle {
+    outline: none !important;
+    box-shadow: none !important;
+    height: 40px;
+    font-weight: normal; /* Зробити поля вводу тоненькими */
+  }
+
+  input[type="login"],
+  input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100px;
+    margin-top: 10px;
+  }
+}

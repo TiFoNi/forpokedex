@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import s from "./NavBar.module.scss";
+import { Image } from "react-bootstrap";
+import { useNavbar } from "@/components/Navbar/NavbarContext";
 
 const Navbar = () => {
   const [activePage, setActivePage] = useState(1);
@@ -66,6 +68,18 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div className={s.AvatarPlace}>
+          <Link
+            href="/Login"
+            className={s.AvatarLink}
+            onClick={() => ActivePageChanger(3)}
+          >
+            <Image
+              src="/NoneAvatar.jpg"
+              className={`${s.AvatarImage} rounded-circle `}
+            />
+          </Link>
         </div>
       </nav>
     </div>

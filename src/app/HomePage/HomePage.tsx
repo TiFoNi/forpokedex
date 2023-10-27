@@ -12,6 +12,8 @@ import TabsButtons from "@/components/TabsButtons/TabsButtons";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { debounce } from "lodash";
+import { NavbarProvider, useNavbar } from "@/components/Navbar/NavbarContext";
 
 interface Pokemon {
   name: string;
@@ -105,34 +107,52 @@ const HomePage = () => {
   const [searchPokemons, setsearchPokemons] = useState<Pokemon[]>([]);
   const [searchText, setSearchText] = useState<string>("");
 
-  const handleSearch = (searchText: string) => {
-    setSearchText(searchText);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const updateSelectedTypes = (types: string[]) => {
+    setSelectedTypes(types);
+  };
 
-    let searchResults: Pokemon[] = [];
-    if (filteredPokemon) {
-      if (filteredPokemon.length !== 0) {
-        searchResults = filteredPokemon.filter((pokemon) => {
+  const debouncedhandleSearch = debounce(
+    (searchText: string, selectedTypes: string[]) => {
+      let searchResults: Pokemon[] = [];
+
+      let filteredByType = allPokemon;
+      if (selectedTypes.length > 0) {
+        filteredByType = allPokemon.filter((onepokemon) =>
+          selectedTypes.some((selectedType) =>
+            onepokemon.types.some((t) => t.type.name === selectedType)
+          )
+        );
+      }
+
+      if (filteredByType.length > 0) {
+        searchResults = filteredByType.filter((pokemon) => {
           return (
             String(pokemon.id) === searchText ||
             pokemon.name.toLowerCase().includes(searchText.toLowerCase())
           );
         });
       }
-    } else {
-      searchResults = allPokemon.filter((pokemon) => {
-        return (
-          String(pokemon.id) === searchText ||
-          pokemon.name.toLowerCase().includes(searchText.toLowerCase())
-        );
-      });
-    }
 
-    setsearchPokemons(searchResults);
+      setsearchPokemons(searchResults);
+    },
+    300
+  );
+
+  const handleSearch = (searchText: string) => {
+    setSearchText(searchText);
+    if (searchText) {
+      debouncedhandleSearch(searchText, selectedTypes);
+    } else {
+      setsearchPokemons([]);
+    }
   };
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
-    setSearchText("");
+    if (selectedTypes.length === 0) {
+      setCurrentPage(newPage);
+      setSearchText("");
+    }
   };
 
   const totalPokemonCount = 1000;
@@ -149,9 +169,11 @@ const HomePage = () => {
   const [activeButtonIndexPCount, setActiveButtonIndexPCount] = useState(18);
 
   const handlePokemonsCountChange = (Count: number) => {
-    setPokemonsCount(Count);
-    setActiveButtonIndexPCount(Count);
-    setCurrentPage(1);
+    if (selectedTypes.length === 0) {
+      setPokemonsCount(Count);
+      setActiveButtonIndexPCount(Count);
+      setCurrentPage(1);
+    }
   };
 
   const handleSortedPokemon = (sortedPokemon: Pokemon[] | null) => {
@@ -181,14 +203,16 @@ const HomePage = () => {
   const [isRightMenuVisible, setIsRightMenuVisible] = useState(false);
 
   return (
-    <>
+    <NavbarProvider>
       <Navbar />
       <div className={s.BGcontainer}>
         <div className={s.pagesContainer}>
           <div className={s.UpMenu}>
             <SearchPokemon onSearch={handleSearch} searchText={searchText} />
             <button
-              className={s.UpMenuButton}
+              className={`${s.UpMenuButton} ${
+                isRightMenuVisible ? "" : s.hiddenButton
+              }`}
               onClick={() => setIsRightMenuVisible(!isRightMenuVisible)}
             >
               Menu
@@ -300,13 +324,14 @@ const HomePage = () => {
                   pokemon={allPokemon}
                   handleSortedPokemon={handleSortedPokemon}
                   pokemonList={pokemonList}
+                  updateSelectedTypes={updateSelectedTypes}
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </NavbarProvider>
   );
 };
 

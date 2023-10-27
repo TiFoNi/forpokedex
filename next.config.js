@@ -5,6 +5,11 @@ const nextConfig = {
     unoptimized: true,
   },
   output: "export",
+  // async exportPathMap() {
+  //   return {
+  //     "/": { page: "/app/HomePage" },
+  //   };
+  // },
 };
 
 module.exports = nextConfig;

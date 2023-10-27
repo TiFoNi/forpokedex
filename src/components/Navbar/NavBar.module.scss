@@ -13,3 +13,15 @@
 .forMargin {
   margin-top: 3% !important;
 }
+.AvatarPlace {
+  display: flex;
+  justify-content: end;
+}
+.AvatarLink {
+  display: flex;
+  justify-content: end;
+}
+.AvatarImage {
+  max-width: 42px;
+  max-height: 42px;
+}
