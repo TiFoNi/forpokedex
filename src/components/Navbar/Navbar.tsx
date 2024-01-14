@@ -66,19 +66,31 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
+            <div className={s.AvatarPlaceForPhone}>
+              <Link
+                href="/Login"
+                className={s.AvatarLink}
+                onClick={() => ActivePageChanger(3)}
+              >
+                <Image
+                  src="./NoneAvatar.jpg"
+                  className={`${s.AvatarImage} rounded-circle `}
+                />
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className={s.AvatarPlace}>
-          <Link
-            href="/Login"
-            className={s.AvatarLink}
-            onClick={() => ActivePageChanger(3)}
-          >
-            <Image
-              src="./NoneAvatar.jpg"
-              className={`${s.AvatarImage} rounded-circle `}
-            />
-          </Link>
+          <div className={s.AvatarPlace}>
+            <Link
+              href="/Login"
+              className={s.AvatarLink}
+              onClick={() => ActivePageChanger(3)}
+            >
+              <Image
+                src="./NoneAvatar.jpg"
+                className={`${s.AvatarImage} rounded-circle `}
+              />
+            </Link>
+          </div>
         </div>
       </nav>
     </div>

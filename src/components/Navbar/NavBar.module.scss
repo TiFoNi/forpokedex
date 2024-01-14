@@ -13,10 +13,6 @@
 .forMargin {
   margin-top: 3% !important;
 }
-.AvatarPlace {
-  display: flex;
-  justify-content: end;
-}
 .AvatarLink {
   display: flex;
   justify-content: end;
@@ -24,4 +20,25 @@
 .AvatarImage {
   max-width: 42px;
   max-height: 42px;
+}
+
+.AvatarPlace {
+  display: none;
+  justify-content: end;
+}
+@media (min-width: 768px) {
+  .AvatarPlace {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.AvatarPlaceForPhone {
+  display: none;
+}
+@media (max-width: 768px) {
+  .AvatarPlaceForPhone {
+    display: flex;
+    justify-content: end;
+  }
 }
